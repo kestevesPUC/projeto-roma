@@ -669,7 +669,6 @@ class Util
     public static function formatDatePatternBR($date)
     {
         try {
-            dd($date);
             if (!is_string($date))
                 return '';
             return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');

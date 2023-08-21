@@ -1,21 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<table class="table_ponto table-row-bordered table-striped table-row-gray-200 align-middle gs-0 gy-3 dataTable no-footer dtr-inline p-10"></table>
-<div class="container grid gap-6 mt-5 ">
-    <form class="card pt-10 mx-auto  bg-body-secondary" style="width: 65%">
+<div class="container grid gap-6 mt-5 fundo">
+    <!-- formulário com filtro de perfis -->
+    <form class="card pt-10 mx-auto  bg-secondary-subtle" style="width: 65%">
         <h1 class="bg-body-tertiary p-3 rounded-top fw-semibold" >Consulta de Registro de ponto</h1>
-        <div class="form d-flex flex-column align-items-end mt-3 p-4">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-            <select class="form-select" aria-label="Status do colaborador">
-                <option selected>Status</option>
-                <option value="0">Ativo</option>
-                <option value="1">Inativo</option>
-            </select>
-            <div class="form d-flex flex-row align-items-end mt-3 p-4" style="width: 100%">
+            <div class="form d-flex flex-row align-items-end mt-1 p-4" style="width: 100%">
                 <div class="form-group">
                     <label for="data_inicio">Data Inicial</label>
                     <input type="date" id="data_inicio" name="data_inicio" class="form-control" lang="pt-BR">
@@ -28,57 +18,73 @@
             </div>    
                 
             
-        </div>
     </form>
+    
+    <!-- botão de adicionar perfil de acesso -->
+    <button type="button" class="p-1 ms-auto bi-plus text-bg-secondary rounded-circle mt-4" style="width:51px;height:51px;font-size:1.4rem;"></button>
+    <!-- tabela de renderização de perfis de acesso -->
     <div class="row justify-content-center ">
         <table class=" table table-bordered" style="width: 100%">
-        <thead>
-                <tr>
-                    <th scope="col" class="text-center">Colaborador</th>
-                    <th scope="col" class="text-center">Matrícula</th>
-                    <th scope="col" class="text-center">Admissão</th>
-                    <th scope="col" class="text-center">Setor</th>
-                    <th scope="col" class="text-center">Cargo</th>
-                </tr>
-            </thead>
-            <tbody>
+            <thead>
                     <tr>
-                    <td class="text-center">{{Auth::user()->name}}</td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
+                        <th scope="col" class="text-center bg-secondary-subtle">Colaborador</th>
+                        <th scope="col" class="text-center bg-secondary-subtle">Matrícula</th>
+                        <th scope="col" class="text-center bg-secondary-subtle">Admissão</th>
+                        <th scope="col" class="text-center bg-secondary-subtle">Setor</th>
+                        <th scope="col" class="text-center bg-secondary-subtle">Cargo</th>
                     </tr>
-            </tbody>
+                </thead>
+                <tbody>
+                        <tr >
+                        <td class="text-center">{{Auth::user()->name}}</td>
+                        <td class="text-center">{{Auth::user()->matricula}}</td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        </tr>
+                </tbody>
         </table>
-        <table class="table table-bordered" id="tabelaConsulta" style="width: 100%">
+        <table class="table table-bordered"  style="width: 100%">
             <thead >
                 <tr>
-                <th scope="col" class="text-center">Data</th>
-                <th scope="col" class="text-center">Dia semana</th>
-                <th scope="col" class="text-center">Entrada</th>
-                <th scope="col" class="text-center">Saída</th>
-                <th scope="col" class="text-center">Entrada 2</th>
-                <th scope="col" class="text-center">Saída 2</th>
+                <th scope="col" class="text-center bg-secondary-subtle">Data</th>
+                <th scope="col" class="text-center bg-secondary-subtle">Dia semana</th>
+                <th scope="col" class="text-center bg-secondary-subtle">Entrada</th>
+                <th scope="col" class="text-center bg-secondary-subtle">Saída</th>
+                <th scope="col" class="text-center bg-secondary-subtle">Entrada 2</th>
+                <th scope="col" class="text-center bg-secondary-subtle">Saída 2</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tabelaConsulta">
                 
-                @foreach($resultadoFormatado as $ponto)
-                    <tr>
-                        <td class="text-center">{{$ponto['dataCompletaEntrada']}}</td>
-                        <td class="text-center">{{$ponto['diaDaSemanaEntrada']}}</td>
-                        <td class="text-center">{{$ponto['horaEntrada']}}</td>
-                        <td class="text-center">{{$ponto['horaSaida']}}</td>
-                        <td class="text-center"></td>
-                        <td class="text-center"></td>
-                    </tr>
-                @endforeach
+                    @foreach($resultadoFormatado as $ponto)
+                        <tr data-id="{{$ponto['id_registro']}}">
+                            <td class="text-center">{{$ponto['dataCompletaEntrada']}}</td>
+                            <td class="text-center">{{$ponto['diaDaSemanaEntrada']}}</td>
+                            <td class="text-center">{{$ponto['horaEntrada']}}</td>
+                            <td class="text-center">{{$ponto['horaSaida']}}</td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                        </tr>
+                    @endforeach
+            
                 
             </tbody>
         </table>
+        
+        <nav aria-label="Repaginar busca">
+            <ul class="pagination">
+                <li class="page-item">
+                    <button type=button id="filtrarPaginaMenos" class="page-link text-body-emphasis" >Antigo</button>
+                </li>
+                <li class="page-item">
+                    <button type="button" id="filtrarPaginaMais" class="page-link text-body-emphasis">Próximo</button>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
+
        
 @endsection
 
@@ -92,15 +98,18 @@
 @section('scriptConsulta')
 <script>
     document.getElementById('filtrarDados').addEventListener('click', function(){
+
         var dataInicio = document.getElementById('data_inicio').value;
         var dataFim = document.getElementById('data_fim').value;
-        var url = '/ponto/consulta_data/'+ encodeURIComponent(dataInicio) + '/' + encodeURIComponent(dataFim);
+        var url = '/controle/consulta_data/' + encodeURIComponent(dataInicio) + '/' + encodeURIComponent(dataFim);
+ 
+
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 var tabela = document.getElementById('tabelaConsulta');
+                
                 tabela.innerHTML = '';
-               
                 data.dados.forEach(dado => {
                     tabela.innerHTML += '<tr>' +
                         '<td class="text-center">' + dado.dataCompletaEntrada + '</td>' +
@@ -111,11 +120,57 @@
                         '<td class="text-center"></td>' +
                         '</tr>';
                 });
-                console.log(data);
             })
             .catch(error => {
                 console.error('Erro:', error);
             });
     });
+    var offset = 0;
+    document.getElementById('filtrarPaginaMais').addEventListener('click', function(){
+        
+        
+        offset += 10;
+        
+        fetch('/controle/proximaPagina?offset=' + offset)
+            .then(response => response.json())
+            .then(data => {
+                var tabela = document.getElementById('tabelaConsulta');
+                    console.log(data)
+                tabela.innerHTML = '';
+                data.forEach(dado => {
+                    tabela.innerHTML += '<trdata-id"'+ dado.id_registro +'">' +
+                        '<td class="text-center">' + dado.dataCompletaEntrada + '</td>' +
+                        '<td class="text-center">' + dado.diaDaSemanaEntrada + '</td>' +
+                        '<td class="text-center">' + dado.horaEntrada + '</td>' +
+                        '<td class="text-center">' + dado.horaSaida + '</td>' +
+                        '<td class="text-center"></td>'+
+                        '<td class="text-center"></td>' +
+                        '</tr>';
+                });
+            })
+    })
+    document.getElementById('filtrarPaginaMenos').addEventListener('click', function(){
+        
+        
+        offset -= 10;
+        
+        fetch('/controle/proximaPagina?offset=' + offset)
+            .then(response => response.json())
+            .then(data => {
+                var tabela = document.getElementById('tabelaConsulta');
+                    console.log(data)
+                tabela.innerHTML = '';
+                data.forEach(dado => {
+                    tabela.innerHTML += '<trdata-id"'+ dado.id_registro +'">' +
+                        '<td class="text-center">' + dado.dataCompletaEntrada + '</td>' +
+                        '<td class="text-center">' + dado.diaDaSemanaEntrada + '</td>' +
+                        '<td class="text-center">' + dado.horaEntrada + '</td>' +
+                        '<td class="text-center">' + dado.horaSaida + '</td>' +
+                        '<td class="text-center"></td>'+
+                        '<td class="text-center"></td>' +
+                        '</tr>';
+                });
+            })
+    })
 </script>
 @endsection

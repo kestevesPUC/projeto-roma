@@ -4,14 +4,14 @@ namespace App\Models\Ponto;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PontoSenior extends Model{
+class PontoUser extends Model{
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'controle_ponto_senior';
+    protected $table = 'controle_ponto';
 
 
 
