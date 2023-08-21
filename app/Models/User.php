@@ -22,12 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'cpf',
-        'matricula',
-        'status',
-        'id',
-        'data_demissao',
-        'empresa_id',
-
+        'id'
     ];
 
     /**

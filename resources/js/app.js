@@ -6,5 +6,5 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-
+alert("asfbsyia");
 
