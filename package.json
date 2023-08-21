@@ -152,9 +152,7 @@
     "bootstrap-daterangepicker": "^3.1.0",
     "bootstrap-icons": "^1.5.0",
     "bootstrap-maxlength": "^1.10.1",
-    "bootstrap-multiselectsplitter": "^1.0.4",
-    "common-utils": "^0.0.2",
-    "util": "^0.12.5"
+    "bootstrap-multiselectsplitter": "^1.0.4"
   },
   "keywords": [],
   "author": "",
