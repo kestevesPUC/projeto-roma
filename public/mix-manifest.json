@@ -1,8 +1,10 @@
 {
-    "/js/app.js": "/js/app.js?id=016bb9c444fa15d12b03b2a33e94d0e3",
-    "/assets/plugins/EssentialTables.js": "/assets/plugins/EssentialTables.js?id=df1b3ff58507000ca2f04bc46e993698",
+    "/js/app.js": "/js/app.js?id=255091efe53a936d45335661751dc0f3",
+    "/assets/plugins/EssentialTables.js": "/assets/plugins/EssentialTables.js?id=fb2e6f8885960b17018cf63941b3bfeb",
     "/js/ponto/index.js": "/js/ponto/index.js?id=726e5bf708043a2c693a6c716e0b1cb7",
-    "/js/user/index.js": "/js/user/index.js?id=1093a7d0203e3aa86a32abd48b444805",
+    "/js/user/index.js": "/js/user/index.js?id=d41d8cd98f00b204e9800998ecf8427e",
+    "/js/profile/index.js": "/js/profile/index.js?id=6463cc0ed8602599f30b2f685c7fc389",
+    "/js/util/index.js": "/js/util/index.js?id=b3821660cc7e88aceba4f5880cb71036",
     "/assets/plugins/jquery/code.jquery.com_jquery-3.7.0.min.js": "/assets/plugins/jquery/code.jquery.com_jquery-3.7.0.min.js?id=e6c2415c0ace414e5153670314ce99a9",
-    "/assets/essential.js": "/assets/essential.js?id=ab8084085784ca5347baaca331bcbfc1"
+    "/assets/essential.js": "/assets/essential.js?id=95c7dd55529a1dfdd076fbb02d17781f"
 }

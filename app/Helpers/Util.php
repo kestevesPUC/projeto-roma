@@ -1,6 +1,7 @@
 <?php namespace App\Helpers;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -650,6 +651,7 @@ class Util
     {
         if (!$date)
             return null;
+
         return Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
     }
 
@@ -671,7 +673,7 @@ class Util
         try {
             if (!is_string($date))
                 return '';
-            return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
+            return Carbon::create($date)->format('d/m/Y');
         } catch (Exception $e) {
             return '';
         }

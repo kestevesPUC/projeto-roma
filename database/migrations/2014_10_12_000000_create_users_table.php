@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('cpf')->unique();
+            $table->boolean('status')->default(true);
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('matricula',10)->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

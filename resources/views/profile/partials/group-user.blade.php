@@ -1,24 +1,26 @@
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Tipo de Usuário') }}
-        </h2>
-    </header>
+    @include('profile.partials.header',['title' => "Tipo de Usuário"])
+
     <div class="mt-6 space-y-6">
-        <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+        <form method="post" action="{{ route('profile.tipo') }}" class="mt-6 space-y-6">
         @csrf
-        @method('patch')
+        @method('post')
+
+            <div>
+                <x-text-input id="id" name="id" type="hidden" :value="old('id', $user->id)" />
+            </div>
         @foreach(\App\Helpers\Constants::GRUPO as $key => $tipo)
-            <div class="form-check">
-                <input class="form-check-input" type="radio" value="{{ $key }}" id="grupo_usuario{{$key}}" name="grupo_usuario{{$key}}"  @php echo \Illuminate\Support\Facades\Auth::user()->grupo_usuario == $key ? 'checked' : '' @endphp>
-                <label class="form-check-label" for="grupo_usuario{{ $key }}">
+            <div class="">
+
+                <input class="form-check-input" type="radio" value="{{ $key }}" id="grupo_usuario" name="grupo_usuario"  @php echo ($user->grupo_usuario == $key) ? 'checked' : '' @endphp ></input>
+                <label class="form-check-label" for="grupo_usuario">
                     {{ $tipo }}
                 </label>
             </div>
         @endforeach
 
         <div class="flex items-center gap-4">
-            <x-primary-button type="button" id="save_user_group">{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Salvar') }}</x-primary-button>
         </div>
         </form>
     </div>

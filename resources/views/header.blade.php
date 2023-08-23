@@ -1,6 +1,11 @@
 <x-app-layout>
     <x-slot name="header" >
         <div class=" d-flex flex-row align-items-center gap-3">
+            <div class="shrink-4 flex items-center">
+                <a href="{{ route('dashboard') }}">
+                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                </a>
+            </div>
             <div class="dropdown">
                 <button class="btn btn-secondary text-bg-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Cadastros
@@ -56,10 +61,10 @@
                         </div>
                     </div>
                 </div>
-            </div>    
-        </div>    
+            </div>
+        </div>
     </x-slot>
 
-    
+
 </x-app-layout>
 

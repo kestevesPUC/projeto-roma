@@ -4,7 +4,7 @@ namespace App\Models\Ponto;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ponto extends Model{
+class Ponto extends Model {
 
     /**
      * The table associated with the model.
@@ -20,7 +20,7 @@ class Ponto extends Model{
      *
      * @var string
      */
-    protected $primaryKey = '';
+    protected $primaryKey = 'id';
 
 
 

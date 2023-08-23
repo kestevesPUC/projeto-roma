@@ -56,6 +56,16 @@ return [
             'throw' => false,
         ],
 
+        'DIR_ORD' => [
+            'driver' => env('APP_ENV') != 'local' ? 's3' : 'local',
+            'root' => env('APP_ENV') != 'local' ? '' : storage_path('app'),
+            'key' => env('AWS_ACCESS_KEY_ID', 'AKIAIVDM7KRQXYNHD2SQ'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY', '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'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'bucket' => env('AWS_BUCKET', 'doc-link-s'),
+            'url' => env('AWS_URL', 'https://s3.console.aws.amazon.com/s3/buckets/doc-link-s/'),
+        ],
+
     ],
 
     /*

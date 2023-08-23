@@ -45,6 +45,16 @@ mix.scripts('resources/js/ponto/index.js', 'public/js/ponto/index.js').version()
 mix.scripts('resources/js/user/index.js', 'public/js/user/index.js').version();
 
 /**
+ * Profile
+ */
+mix.scripts('resources/js/profile/index.js', 'public/js/profile/index.js').version();
+
+/**
+ * Util
+ */
+mix.scripts('resources/js/util/index.js', 'public/js/util/index.js').version();
+
+/**
  * JQUERY
  */
 mix.scripts('resources/assets/plugins/jquery/code.jquery.com_jquery-3.7.0.min.js', 'public/assets/plugins/jquery/code.jquery.com_jquery-3.7.0.min.js').version();
