@@ -11,8 +11,8 @@
                     Cadastros
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/cadastro_usuario">Usuário</a></li>
-                    <li><a class="dropdown-item" href="/cadastro_perfil">Perfil de acesso</a></li>
+                    <li><a class="dropdown-item" href="{{ route('cadastro_usuario') }}">Usuário</a></li>
+                    <li><a class="dropdown-item" href="{{ route('cadastro_perfil') }}">Perfil de acesso</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -42,7 +42,7 @@
                                 </x-slot>
 
                                 <x-slot name="content">
-                                    <x-dropdown-link :href="route('profile.edit')"><span>{{ __('Profile') }}</span>
+                                    <x-dropdown-link :href="route('profile.edit')"><span>{{ __('Perfil') }}</span>
 
                                     </x-dropdown-link>
 
@@ -53,7 +53,7 @@
                                         <x-dropdown-link :href="route('logout')"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                            {{ __('Log Out') }}
+                                            {{ __('Sair') }}
                                         </x-dropdown-link>
                                     </form>
                                 </x-slot>
@@ -64,7 +64,5 @@
             </div>
         </div>
     </x-slot>
-
-
 </x-app-layout>
 

@@ -212,7 +212,7 @@ class ProfileController extends Controller
     public function getImageProfile($id)
     {
         if(Storage::disk('DIR_ORD')->exists('img/avatar/profile_'. Arr::get($id, 'id_person') .'.png')){
-            return base64_encode(Storage::disk('DIR_ORD')->get('img/avatar/profile_'. Arr::get($id, 'id_person') .'.png'));
+            return Storage::disk('DIR_ORD')->get('img/avatar/profile_'. Arr::get($id, 'id_person') .'.png');
         } else {
             return base64_encode(Storage::disk('DIR_ORD')->get('img/avatar/profile_default.png'));
         }
@@ -234,7 +234,7 @@ class ProfileController extends Controller
         $file = $_FILES['imagem']['tmp_name'];
         $fileName = 'img/avatar/profile_'.Arr::get($data, 'id').'.png';
 
-        Storage::disk('DIR_ORD')->put($fileName, file_get_contents($file));
+        Storage::disk('DIR_ORD')->put($fileName, base64_encode(file_get_contents($file)));
 
         return ['message' => 'Foto alterada com sucesso!'];
     }
